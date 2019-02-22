@@ -14,13 +14,15 @@ protocol PriceFetcher {
 
 struct BitcoinService: PriceFetcher {
     let networking: Networking
+    let serviceConfiguration: BitcoinServiceConfiguration
     
-    init(networking: Networking) {
+    init(networking: Networking, service config: BitcoinServiceConfiguration) {
         self.networking = networking
+        self.serviceConfiguration = config
     }
     
     func fetch(response: @escaping (PriceResponseModel?) -> Void) {
-        networking.request(from: BitcoinServiceConfiguration.bitcoin) { data, error in
+        networking.request(from: self.serviceConfiguration) { data, error in
             if let error = error {
                 print("Error received requesting Bitcoin price: \(error.localizedDescription)")
                 response(nil)

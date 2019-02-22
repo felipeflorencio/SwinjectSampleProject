@@ -15,7 +15,7 @@ class BitcoinViewController: UIViewController {
     @IBOutlet weak private var primary: UILabel!
     @IBOutlet weak private var partial: UILabel!
     
-    // MARK: Private variables
+    // MARK: Public variables
     var bitcoinInteractor: BitcoinInteractorProtocol?
     
     // MARK: Main class

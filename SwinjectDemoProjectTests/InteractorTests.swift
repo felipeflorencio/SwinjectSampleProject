@@ -23,7 +23,7 @@ class InteractorTests: XCTestCase {
         
         container.register(BitcoinService.self, name: DataSet.one.name) { resolver in
             let networking = resolver ~> (Networking.self, argument: DataSet.one.filename)
-            return BitcoinService(networking: networking)
+            return BitcoinService(networking: networking, service: .bitcoin)
         }
         
         container.register(BitcoinInteractorProtocol.self) { resolver in

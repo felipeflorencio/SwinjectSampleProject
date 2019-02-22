@@ -24,7 +24,7 @@ class MainContainer {
         container.register(Networking.self, factory: { _ in HTTPNetworking() })
         
         container.register(PriceFetcher.self, factory: { resolver in
-            return BitcoinService(networking: resolver.resolve(Networking.self)!)
+            return BitcoinService(networking: resolver.resolve(Networking.self)!, service: .bitcoin)
         })
         
         container.register(BitcoinInteractorProtocol.self, factory: { resolver in

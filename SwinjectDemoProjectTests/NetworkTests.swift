@@ -24,7 +24,7 @@ class NetworkTests: XCTestCase {
         DataSet.all.forEach { dataSet in
             container.register(BitcoinService.self, name: dataSet.name) { resolver in
                 let networking = resolver ~> (Networking.self, argument: dataSet.filename)
-                return BitcoinService(networking: networking)
+                return BitcoinService(networking: networking, service: .bitcoin)
             }
         }
     }
